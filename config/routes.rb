@@ -1,4 +1,9 @@
 Switter::Application.routes.draw do
+  get "default_pages/home"
+
+  get "default_pages/help"
+  get "default_pages/about"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
