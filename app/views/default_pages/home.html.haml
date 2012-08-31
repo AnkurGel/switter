@@ -1,6 +1,8 @@
-%h1 Switter
-%p
-  This is the home page for the
-  %a{ :href => "http://switter.heroku.com" }Switter
-  application
-
+=provide(:title, "Our own social network")
+%div.center.hero-unit
+  %h1 Welcome to Switter
+  %h2
+    This is the home page for the
+    %a{ :href => "http://switter.heroku.com" }Switter
+    application
+  =link_to "Sign up now!", '#', class: 'btn btn-large btn-primary'
