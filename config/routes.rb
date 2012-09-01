@@ -1,11 +1,16 @@
 Switter::Application.routes.draw do
   
   resources :users
-  match '/signup', to: 'users#new'
+  resources :sessions, :only => [:new, :create, :destroy] #specify RESTful API for only these 3 actions.
+
+  root to: 'default_pages#home'
 
   match '/help', to: 'default_pages#help'
   match '/about', to: 'default_pages#about'
-  root to: 'default_pages#home'
+
+  match '/signup', to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', :via => :delete #should invoke using HTTP DELETE request
 
 
 
