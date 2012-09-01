@@ -7,6 +7,22 @@ describe "UserPages" do
   it { should have_selector('h1',       :text => "Sign up") }
   it { should have_selector('title',    :text => 'Sign up') }
 
+  describe "index" do
+    before do
+      sign_in FactoryGirl.create(:user)
+      FactoryGirl.create(:user, :name => 'foo', :email => 'foo@bar.com')
+      FactoryGirl.create(:user, :name => 'Amita', :email => 'amita@pradhan.com')
+      visit users_path
+    end
+
+    it { should have_selector('title', :text => 'All users') }
+    it { should have_selector('h1', :text => 'All users') }
+
+    it "should list all user" do
+      User.all.each{ |usr| page.should have_selector('li', :text => usr.name) }
+    end
+  end
+
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
     before { visit user_path(user) }
@@ -41,7 +57,7 @@ describe "UserPages" do
 
   describe 'edit page' do
     let(:user) { FactoryGirl.create(:user) }
-    before { visit edit_user_path(user) }
+    before { sign_in user; visit edit_user_path(user) }
 
     describe "page" do
       it { should have_selector('h1', :text => 'Update your profile') }
