@@ -86,7 +86,18 @@ describe "UserPages" do
       specify { user.reload.name.should  == new_name }
       specify { user.reload.email.should == new_email }
     end
+  end
 
+  describe "delete links" do
+    it { should_not have_link('delete') }
+
+    describe "as an admin user" do
+      let(:admin) { FactoryGirl.create(:admin) }
+      before { sign_in admin; visit users_path }
+      it "should not have ability to delete himself" do
+        should_not have_link('delete', :href => user_path(admin))
+      end
+    end
   end
 
 end
