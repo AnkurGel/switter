@@ -1,1 +1,1 @@
--provide(:title, @user.name)%div.row  %aside.span4    %section      %h1        =gravatar_for @user        =@user.name
+-provide(:title, @user.name)%div.row  %aside.span4    %section      %h1        =gravatar_for @user        =@user.name  %div.span8    - if @user.microposts.any?      %h3        Micrposts (        =@user.microposts.count.to_s + " )"      %ol.microposts        =render @microposts      =will_paginate @microposts
