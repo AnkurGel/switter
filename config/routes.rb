@@ -1,7 +1,9 @@
 Switter::Application.routes.draw do
-  
+
   resources :users
-  resources :sessions, :only => [:new, :create, :destroy] #specify RESTful API for only these 3 actions.
+  resources :sessions, :only => [:new, :create, :destroy] #specify
+  #RESTful API for only these 3 actions.
+  resources :microposts, :only => [:create, :destroy]
 
   root to: 'default_pages#home'
 
