@@ -22,21 +22,33 @@ $(document).ready(function(){
 function delete_posts(){
   $('a.remote-delete').click(function(){
     var link = $(this).parent();
-    $.ajax({
-      type: "POST",
-      url: this.href,
-      data: { _method: 'delete'},
-      success: function() {
-        link.effect('highlight', {mode: 'hide'} , 3000);
-        content = $('div.span8').find('h3').html();
-        if (content.match(/\d+/))
-          {
-            content = content.replace(content.match(/\d+/), content.match(/\d+/)-1);
-            $('div.span8').find('h3').html(content);
-          }
-      },
-      dataType: 'script'
-    });
+    if (confirm("Are you sure?"))
+      {
+        $.ajax({
+          type: "POST",
+          url: this.href,
+          data: { _method: 'delete'},
+          success: function() {
+            link.effect('highlight', {mode: 'hide'} , 3000);
+            content = $('div.span8').find('h3').html();
+            if (content.match(/\d+/))
+            {
+              content = content.replace(content.match(/\d+/), content.match(/\d+/)-1);
+              $('div.span8').find('h3').html(content);
+            }
+            content = $('aside.span4').find('span').last().html();
+            if (content.match(/\d+/))
+            {
+              content = content.replace(content.match(/\d+/), content.match(/\d+/)-1);
+              $('aside.span4').find('span').last().effect('highlight', {}
+                                                          , 3000)
+              $('aside.span4').find('span').last().html(content);
+            }
+          },
+          dataType: 'script'
+        });
+      }
+
     return false;
   });
 }
