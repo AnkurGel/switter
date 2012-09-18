@@ -1,0 +1,5 @@
+TODO
+=====
+1. _Highlight and fade-away as a post is deleted_ **[DONE]**
+2. Follow mechanism in feed
+3. Search users field [by name, by email]

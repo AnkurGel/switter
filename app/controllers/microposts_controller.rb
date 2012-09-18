@@ -19,7 +19,11 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       @micropost.destroy
-      redirect_to root_url
+      respond_to do |format|
+        format.js { render nothing: true }
+      end
+
+#      redirect_to root_url
     end
   end
 end

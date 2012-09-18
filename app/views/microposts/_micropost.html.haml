@@ -5,5 +5,7 @@
     =time_ago_in_words(micropost.created_at)
     ago
   -if current_user?(micropost.user)
-    =link_to "Delete", micropost, :method => :delete, :data => { :confirm => "Are you sure?" }, :title => micropost.content
+    /=link_to "Delete", micropost, :method => :delete, :data => { :confirm => "Are you sure?" }, :title => micropost.content
+    =link_to "Delete", { :controller => 'microposts', :action => :destroy, :id => micropost.id }, :class => 'remote-delete', :data => { :confirm => "Are you sure?" }
+    / = link_to "Delete", :data => { :confirm => "Are you sure?" }, :class => 'remote-delete', :action => :destroy
 
