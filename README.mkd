@@ -1,0 +1,14 @@
+Welcome to Switter
+=================
+### Production: ###
+
+[http://switter.heroku.com](http://switter.heroku.com)
+
+### Platform used ###
+* ActiveRecord ORM
+* [HAML](http://haml-lang.com) as templating engine
+* [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
+* [JQuery](http://jquery.com) and [JQueryUI](http://jqueryui.com/)
+* RSpec, Capybara, [FactoryGirl](https://github.com/thoughtbot/factory_girl) for TDD
+* Debugger and awesome_print for debugging
+
